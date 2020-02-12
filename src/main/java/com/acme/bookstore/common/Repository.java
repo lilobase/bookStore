@@ -1,10 +1,8 @@
 package com.acme.bookstore.common;
 
-import com.acme.bookstore.domain.Book;
-
 import java.util.UUID;
 
-public interface Repository<T extends AggregateRoot> {
+public interface Repository<T extends Entity> {
     void add(T entity);
 
     T get(UUID id);

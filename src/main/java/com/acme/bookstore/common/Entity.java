@@ -1,5 +1,5 @@
 package com.acme.bookstore.common;
 
-public interface AggregateRoot<I> {
+public interface Entity<I> {
     public I id();
 }

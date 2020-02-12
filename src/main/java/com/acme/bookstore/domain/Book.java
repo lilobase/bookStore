@@ -4,7 +4,7 @@ import com.acme.bookstore.common.*;
 
 import java.util.UUID;
 
-public class Book implements AggregateRootWithUUID {
+public class Book implements EntityWithUUID {
     public Book(UUID id, String title, UUID author, String description) {
         this.id = id;
         this.title = title;
