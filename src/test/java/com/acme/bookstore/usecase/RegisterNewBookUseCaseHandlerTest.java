@@ -2,19 +2,23 @@ package com.acme.bookstore.usecase;
 
 import com.acme.bookstore.domain.*;
 import com.acme.bookstore.infrastructure.*;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.*;
 
 class RegisterNewBookUseCaseHandlerTest {
+    @BeforeEach
+    void setUp() {
+        catalogRepository = new BookCatalogRepositoryInMemory();
+        authorRepository = new AuthorRepositoryInMemory();
+        handler = new RegisterNewBookUseCaseHandler(catalogRepository, authorRepository);
+    }
+
     @Test
     void ItCanRegisterABook() {
-        final BookCatalogRepositoryInMemory catalogRepository = new BookCatalogRepositoryInMemory();
-        final AuthorRepositoryInMemory authorRepository = new AuthorRepositoryInMemory();
         final RegisterNewBookUseCase useCase = new RegisterNewBookUseCase("Mon livre", "Arnaud", "Super livre");
-        final RegisterNewBookUseCaseHandler handler = new RegisterNewBookUseCaseHandler(catalogRepository, authorRepository);
 
         final UUID uuid = handler.handle(useCase);
 
@@ -28,11 +32,8 @@ class RegisterNewBookUseCaseHandlerTest {
 
     @Test
     void itDoesntCreateTheSameAuthorTwice() {
-        final BookCatalogRepositoryInMemory catalogRepository = new BookCatalogRepositoryInMemory();
-        final AuthorRepositoryInMemory authorRepository = new AuthorRepositoryInMemory();
         final RegisterNewBookUseCase aUseCase = new RegisterNewBookUseCase("Mon livre", "Arnaud", "Super livre");
         final RegisterNewBookUseCase anotherUseCase = new RegisterNewBookUseCase("Mon autre livre", "Arnaud", "Super livre");
-        final RegisterNewBookUseCaseHandler handler = new RegisterNewBookUseCaseHandler(catalogRepository, authorRepository);
 
         final UUID firstBookId = handler.handle(aUseCase);
         final UUID secondBookId = handler.handle(anotherUseCase);
@@ -41,4 +42,8 @@ class RegisterNewBookUseCaseHandlerTest {
         final Book secondBook= catalogRepository.get(secondBookId);
         assertThat(firstBook.author()).isEqualTo(secondBook.author());
     }
+
+    private BookCatalogRepositoryInMemory catalogRepository;
+    private AuthorRepositoryInMemory authorRepository;
+    private RegisterNewBookUseCaseHandler handler;
 }
