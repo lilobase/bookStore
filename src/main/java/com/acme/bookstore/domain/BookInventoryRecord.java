@@ -20,6 +20,11 @@ public class BookInventoryRecord implements Entity<UUID> {
         return quantity;
     }
 
+    public BookInventoryRecord addQuantity(PositiveInteger quantityToAdd) {
+        quantity = quantity.add(quantityToAdd);
+        return this;
+    }
+
     private final UUID bookId;
-    private final PositiveInteger quantity;
+    private PositiveInteger quantity;
 }

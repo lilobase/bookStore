@@ -28,5 +28,9 @@ public class PositiveInteger {
                 '}';
     }
 
+    public PositiveInteger add(PositiveInteger quantity) {
+        return new PositiveInteger(quantity.number + number);
+    }
+
     public final int number;
 }
