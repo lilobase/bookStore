@@ -1,5 +1,7 @@
 package com.acme.bookstore.domain;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Objects;
 
 public class ISBN {
@@ -24,6 +26,7 @@ public class ISBN {
         return new ISBN(isbn);
     }
 
+    @JsonValue
     public String toString() {
         return isbn;
     }

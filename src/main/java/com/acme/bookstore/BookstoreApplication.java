@@ -1,6 +1,5 @@
 package com.acme.bookstore;
 
-import com.acme.bookstore.common.*;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.vavr.jackson.datatype.VavrModule;
@@ -19,6 +18,8 @@ public class BookstoreApplication {
     public void configJackson(ObjectMapper jackson) {
         jackson
                 .registerModule(new VavrModule())
-                .registerModule(new JavaTimeModule());
+                .registerModule(new JavaTimeModule())
+                .configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+
     }
 }

@@ -5,15 +5,15 @@ import com.acme.bookstore.domain.*;
 
 import java.util.UUID;
 
-public class RegisterNewBookUseCaseHandler implements UseCaseHandler<RegisterNewBookUseCase, ISBN> {
+public class RegisterBookUseCaseHandler implements UseCaseHandler<RegisterBookUseCase, ISBN> {
 
-    public RegisterNewBookUseCaseHandler(BookCatalogRepository catalogRepository, AuthorRepository authorRepository) {
+    public RegisterBookUseCaseHandler(BookCatalogRepository catalogRepository, AuthorRepository authorRepository) {
         this.catalogRepository = catalogRepository;
         this.authorRepository = authorRepository;
     }
 
     @Override
-    public ISBN handle(RegisterNewBookUseCase useCaseParam) {
+    public ISBN handle(RegisterBookUseCase useCaseParam) {
         final Author author = authorRepository
                 .findByAuthorByName(useCaseParam.author)
                 .getOrElse(() -> {

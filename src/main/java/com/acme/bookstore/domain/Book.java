@@ -1,6 +1,7 @@
 package com.acme.bookstore.domain;
 
 import com.acme.bookstore.common.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
@@ -16,14 +17,22 @@ public class Book implements Entity<ISBN> {
         return id;
     }
 
+    @JsonProperty
+    public ISBN isbn() {
+        return id();
+    }
+
+    @JsonProperty
     public String title() {
         return title;
     }
 
+    @JsonProperty
     public UUID author() {
         return author;
     }
 
+    @JsonProperty
     public String description() {
         return description;
     }

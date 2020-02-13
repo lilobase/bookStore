@@ -1,7 +1,6 @@
 package com.acme.bookstore.web.BooksResource;
 
 import com.acme.bookstore.domain.*;
-import com.acme.bookstore.infrastructure.*;
 import com.acme.bookstore.usecase.*;
 import io.vavr.collection.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,8 @@ public class BooksResource {
     }
 
     @PostMapping
-    public String registerBook(@RequestBody RegisterNewBookUseCase useCase) {
-        final RegisterNewBookUseCaseHandler handler = new RegisterNewBookUseCaseHandler(
+    public String registerBook(@RequestBody RegisterBookUseCase useCase) {
+        final RegisterBookUseCaseHandler handler = new RegisterBookUseCaseHandler(
                 catalogRepository,
                 authorRepository
         );
@@ -28,9 +27,9 @@ public class BooksResource {
     }
 
     @GetMapping
-    public List<String> findAll() {
+    public List<Book> findAll() {
         final FindAllBooksUseCaseHandler handler = new FindAllBooksUseCaseHandler(catalogRepository);
-        return handler.handle(null).map(e -> e.title());
+        return handler.handle(null);
     }
 
     private final BookCatalogRepository catalogRepository;
