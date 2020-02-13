@@ -5,5 +5,5 @@ import com.acme.bookstore.domain.*;
 
 import java.util.UUID;
 
-public class BookCatalogRepositoryInMemory extends RepositoryInMemory<UUID, Book> implements BookCatalogRepository {
+public class BookCatalogRepositoryInMemory extends RepositoryInMemory<ISBN, Book> implements BookCatalogRepository {
 }

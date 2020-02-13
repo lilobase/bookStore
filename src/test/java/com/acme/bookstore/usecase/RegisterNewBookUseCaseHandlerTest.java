@@ -18,11 +18,11 @@ class RegisterNewBookUseCaseHandlerTest {
 
     @Test
     void ItCanRegisterABook() {
-        final RegisterNewBookUseCase useCase = new RegisterNewBookUseCase("Mon livre", "Arnaud", "Super livre");
+        final RegisterNewBookUseCase useCase = new RegisterNewBookUseCase("Mon livre", "Arnaud", "Super livre", "isbn");
 
-        final UUID uuid = handler.handle(useCase);
+        final ISBN isbn = handler.handle(useCase);
 
-        final Book actualBook = catalogRepository.get(uuid);
+        final Book actualBook = catalogRepository.get(ISBN.fromString("isbn"));
         final UUID authorId = actualBook.author();
         final Author actualAuthor = authorRepository.get(authorId);
         assertThat(actualBook.title()).isEqualTo("Mon livre");
@@ -32,11 +32,11 @@ class RegisterNewBookUseCaseHandlerTest {
 
     @Test
     void itDoesntCreateTheSameAuthorTwice() {
-        final RegisterNewBookUseCase aUseCase = new RegisterNewBookUseCase("Mon livre", "Arnaud", "Super livre");
-        final RegisterNewBookUseCase anotherUseCase = new RegisterNewBookUseCase("Mon autre livre", "Arnaud", "Super livre");
+        final RegisterNewBookUseCase aUseCase = new RegisterNewBookUseCase("Mon livre", "Arnaud", "Super livre", "isbn");
+        final RegisterNewBookUseCase anotherUseCase = new RegisterNewBookUseCase("Mon autre livre", "Arnaud", "Super livre", "isbn");
 
-        final UUID firstBookId = handler.handle(aUseCase);
-        final UUID secondBookId = handler.handle(anotherUseCase);
+        final ISBN firstBookId = handler.handle(aUseCase);
+        final ISBN secondBookId = handler.handle(anotherUseCase);
 
         final Book firstBook = catalogRepository.get(firstBookId);
         final Book secondBook= catalogRepository.get(secondBookId);

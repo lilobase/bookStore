@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 class AddBookToInventoryUseCaseHandlerTest {
     @BeforeEach
     void setUp() {
-        bookId = UUID.randomUUID();
+        bookId = ISBN.fromString("isbn");
         repository = new InventoryRepositoryInMemory();
         handler = new AddBookToInventoryUseCaseHandler(repository);
     }
@@ -38,7 +38,7 @@ class AddBookToInventoryUseCaseHandlerTest {
         assertThat(actualRecord.quantity()).isEqualTo(new PositiveInteger(8));
     }
 
-    private UUID bookId;
+    private ISBN bookId;
     private InventoryRepository repository;
     private AddBookToInventoryUseCaseHandler handler;
 }

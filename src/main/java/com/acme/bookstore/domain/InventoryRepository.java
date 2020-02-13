@@ -4,5 +4,5 @@ import com.acme.bookstore.common.Repository;
 
 import java.util.UUID;
 
-public interface InventoryRepository extends Repository<UUID, BookInventoryRecord> {
+public interface InventoryRepository extends Repository<ISBN, BookInventoryRecord> {
 }

@@ -3,20 +3,18 @@ package com.acme.bookstore.domain;
 import com.acme.bookstore.common.Entity;
 import com.acme.bookstore.usecase.PositiveInteger;
 
-import java.util.UUID;
-
-public class BookInventoryRecord implements Entity<UUID> {
-    public BookInventoryRecord(UUID bookId, PositiveInteger quantity) {
+public class BookInventoryRecord implements Entity<ISBN> {
+    public BookInventoryRecord(ISBN bookId, PositiveInteger quantity) {
         this.bookId = bookId;
         this.quantity = quantity;
     }
 
-    public static BookInventoryRecord nullObject(UUID bookId) {
+    public static BookInventoryRecord nullObject(ISBN bookId) {
         return new Blank(bookId);
     }
 
     @Override
-    public UUID id() {
+    public ISBN id() {
         return bookId;
     }
 
@@ -29,12 +27,11 @@ public class BookInventoryRecord implements Entity<UUID> {
         return this;
     }
 
-    private final UUID bookId;
+    private final ISBN bookId;
     private PositiveInteger quantity;
 
-    private static Blank nullObject = null;
     public static class Blank extends BookInventoryRecord {
-        Blank(UUID bookId) {
+        Blank(ISBN bookId) {
             super(bookId, new PositiveInteger(0));
         }
     }

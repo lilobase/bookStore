@@ -4,15 +4,15 @@ import com.acme.bookstore.common.*;
 
 import java.util.UUID;
 
-public class Book implements EntityWithUUID {
-    public Book(UUID id, String title, UUID author, String description) {
+public class Book implements Entity<ISBN> {
+    public Book(ISBN id, String title, UUID author, String description) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
     }
 
-    public UUID id() {
+    public ISBN id() {
         return id;
     }
 
@@ -28,7 +28,7 @@ public class Book implements EntityWithUUID {
         return description;
     }
 
-    private UUID id;
+    private ISBN id;
     private String title;
     private UUID author;
     private String description;
