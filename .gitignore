@@ -4,6 +4,7 @@ build/
 gradle/
 !**/src/main/**
 !**/src/test/**
+book.db
 
 ### STS ###
 .apt_generated
