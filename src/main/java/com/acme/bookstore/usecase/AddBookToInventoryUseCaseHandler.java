@@ -15,12 +15,11 @@ public class AddBookToInventoryUseCaseHandler implements UseCaseHandler<AddBookT
     }
 
     private BookInventoryRecord getOrCreate(AddBookToInventoryUseCase useCaseParam) {
-        try {
-            final BookInventoryRecord record = repository.get(useCaseParam.bookId);
-            return record.addQuantity(useCaseParam.quantity);
-        } catch (Exception e) {
-            return new BookInventoryRecord(useCaseParam.bookId, useCaseParam.quantity);
-        }
+        final BookInventoryRecord record = repository
+                .find(useCaseParam.bookId)
+                .getOrElse(() -> BookInventoryRecord.nullObject(useCaseParam.bookId));
+        record.addQuantity(useCaseParam.quantity);
+        return record;
     }
 
     private final InventoryRepository repository;

@@ -1,14 +1,19 @@
 package com.acme.bookstore.common;
 
 import io.vavr.collection.*;
+import io.vavr.control.Option;
 
-public abstract class RepositoryInMemory<I, E extends Entity<I>> implements Repository<E> {
+public abstract class RepositoryInMemory<I, E extends Entity<I>> implements Repository<I, E> {
     public void add(E entity) {
         entities = entities.put(entity.id(), entity);
     }
 
     public E get(I id) {
-        return entities.get(id).get();
+        return find(id).get();
+    }
+
+    public Option<E> find(I id) {
+        return entities.get(id);
     }
 
     public Map<I, E> entities() {

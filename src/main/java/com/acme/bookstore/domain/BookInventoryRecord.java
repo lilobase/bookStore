@@ -11,6 +11,10 @@ public class BookInventoryRecord implements Entity<UUID> {
         this.quantity = quantity;
     }
 
+    public static BookInventoryRecord nullObject(UUID bookId) {
+        return new Blank(bookId);
+    }
+
     @Override
     public UUID id() {
         return bookId;
@@ -27,4 +31,11 @@ public class BookInventoryRecord implements Entity<UUID> {
 
     private final UUID bookId;
     private PositiveInteger quantity;
+
+    private static Blank nullObject = null;
+    public static class Blank extends BookInventoryRecord {
+        Blank(UUID bookId) {
+            super(bookId, new PositiveInteger(0));
+        }
+    }
 }

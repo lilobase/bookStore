@@ -2,6 +2,8 @@ package com.acme.bookstore.domain;
 
 import com.acme.bookstore.common.Repository;
 
-public interface BookCatalogRepository extends Repository<Book> {
+import java.util.UUID;
+
+public interface BookCatalogRepository extends Repository<UUID, Book> {
 
 }

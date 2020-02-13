@@ -2,5 +2,7 @@ package com.acme.bookstore.domain;
 
 import com.acme.bookstore.common.Repository;
 
-public interface InventoryRepository extends Repository<BookInventoryRecord> {
+import java.util.UUID;
+
+public interface InventoryRepository extends Repository<UUID, BookInventoryRecord> {
 }
