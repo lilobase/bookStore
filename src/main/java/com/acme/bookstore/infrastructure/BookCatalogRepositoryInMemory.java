@@ -3,9 +3,7 @@ package com.acme.bookstore.infrastructure;
 import com.acme.bookstore.common.RepositoryInMemory;
 import com.acme.bookstore.domain.*;
 import io.vavr.collection.List;
-import org.springframework.stereotype.Component;
 
-@Component
 public class BookCatalogRepositoryInMemory extends RepositoryInMemory<ISBN, Book> implements BookCatalogRepository {
     @Override
     public List<Book> findAll() {
