@@ -1,7 +1,6 @@
 package com.acme.bookstore.domain;
 
 import com.acme.bookstore.common.Entity;
-import com.acme.bookstore.usecase.PositiveInteger;
 
 public class BookInventoryRecord implements Entity<ISBN> {
     public BookInventoryRecord(ISBN bookId, PositiveInteger quantity) {

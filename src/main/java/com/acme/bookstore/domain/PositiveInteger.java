@@ -1,4 +1,4 @@
-package com.acme.bookstore.usecase;
+package com.acme.bookstore.domain;
 
 import java.util.Objects;
 

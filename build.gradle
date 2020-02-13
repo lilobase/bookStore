@@ -16,6 +16,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jooq'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'io.vavr:vavr:1.0.0-alpha-3'
+	implementation 'org.flywaydb:flyway-core:6.2.2'
+	implementation 'io.vavr:vavr-jackson:0.10.2'
+	compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.30.1'
 	testCompile("org.assertj:assertj-core:3.11.1")
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

@@ -1,7 +1,7 @@
 package com.acme.bookstore.usecase;
 
 import com.acme.bookstore.common.UseCase;
-import com.acme.bookstore.domain.ISBN;
+import com.acme.bookstore.domain.*;
 
 public class AddBookToInventoryUseCase implements UseCase {
     public AddBookToInventoryUseCase(ISBN bookId, PositiveInteger quantity) {

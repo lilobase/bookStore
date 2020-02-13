@@ -4,8 +4,6 @@ import com.acme.bookstore.domain.*;
 import com.acme.bookstore.infrastructure.InventoryRepositoryInMemory;
 import org.junit.jupiter.api.*;
 
-import java.util.UUID;
-
 import static org.assertj.core.api.Assertions.*;
 
 class AddBookToInventoryUseCaseHandlerTest {
