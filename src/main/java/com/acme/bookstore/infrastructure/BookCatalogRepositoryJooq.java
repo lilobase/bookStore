@@ -19,17 +19,6 @@ public class BookCatalogRepositoryJooq implements BookCatalogRepository {
     }
 
     @Override
-    public List<Book> findAll() {
-        return List.ofAll(
-                jooq
-                        .select(ALL_FIELDS.asJava())
-                        .from(TABLE)
-                        .fetch()
-                        .map(this::map)
-        );
-    }
-
-    @Override
     public void add(Book entity) {
         jooq
                 .insertInto(TABLE)
