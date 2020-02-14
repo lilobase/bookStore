@@ -29,7 +29,7 @@ public class BooksResource {
     @GetMapping
     public List<Book> findAll() {
         final FindAllBooksUseCaseHandler handler = new FindAllBooksUseCaseHandler(catalogRepository);
-        return handler.handle(null);
+        return handler.handle(new FindAllBooksUseCase());
     }
 
     private final BookCatalogRepository catalogRepository;
