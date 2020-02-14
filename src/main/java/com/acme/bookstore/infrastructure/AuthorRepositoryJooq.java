@@ -59,7 +59,7 @@ public class AuthorRepositoryJooq implements AuthorRepository {
     public static final Table<Record> TABLE = DSL.table("author");
     public static final Field<UUID> ID = DSL.field("id", UUID.class);
     public static final Field<String> NAME = DSL.field("name", String.class);
-    public static final List<? extends Field<? extends Serializable>> ALL_FIELDS = List.of(ID, NAME);
+    public static final List<Field<?>> ALL_FIELDS = List.of(ID, NAME);
 
     private final DSLContext jooq;
 }
