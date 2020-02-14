@@ -15,7 +15,7 @@ public class RegisterBookUseCaseHandler implements UseCaseHandler<RegisterBookUs
     @Override
     public ISBN handle(RegisterBookUseCase useCaseParam) {
         final Author author = authorRepository
-                .findByAuthorByName(useCaseParam.author)
+                .findAuthorByName(useCaseParam.author)
                 .getOrElse(() -> {
                     final Author newAuthor = new Author(UUID.randomUUID(), useCaseParam.author);
                     authorRepository.add(newAuthor);
