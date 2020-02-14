@@ -2,6 +2,7 @@ package com.acme.bookstore.usecase;
 
 import com.acme.bookstore.domain.*;
 import com.acme.bookstore.infrastructure.*;
+import com.acme.bookstore.infrastructure.readmodel.BookViewModelDaoJooq;
 import com.acme.bookstore.usecase.model.BookViewModel;
 import infrastructure.InMemoryDSLContext;
 import io.vavr.collection.List;
@@ -17,7 +18,7 @@ class FindAllBooksUseCaseHandlerTest {
     void itReturnsAllBooks() {
         final DSLContext jooq = InMemoryDSLContext.DSL();
         initBookAndAuthor(jooq);
-        final BookViewModelRepository repository = new BookViewModelRepositoryJooq(jooq);
+        final BookViewModelRepository repository = new BookViewModelDaoJooq(jooq);
         final FindAllBooksUseCaseHandler handler = new FindAllBooksUseCaseHandler(repository);
 
         final List<BookViewModel> books = handler.handle(null);

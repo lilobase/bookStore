@@ -1,6 +1,7 @@
-package com.acme.bookstore.infrastructure;
+package com.acme.bookstore.infrastructure.readmodel;
 
 import com.acme.bookstore.domain.BookViewModelRepository;
+import com.acme.bookstore.infrastructure.*;
 import com.acme.bookstore.usecase.model.BookViewModel;
 import io.vavr.collection.List;
 import org.jooq.DSLContext;
@@ -8,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BookViewModelRepositoryJooq implements BookViewModelRepository {
+public class BookViewModelDaoJooq implements BookViewModelRepository {
 
     @Autowired
-    public BookViewModelRepositoryJooq(DSLContext jooq) {
+    public BookViewModelDaoJooq(DSLContext jooq) {
         this.jooq = jooq;
     }
 
